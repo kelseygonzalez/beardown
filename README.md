@@ -1,6 +1,6 @@
 # beardown <img src="man/figures/beardown_hex.png" align="right" width=200 />
 
-An in-develop package for dissertation writing at the University of Arizona based off the [thesisdown](https://github.com/ismayc/beardown) R package and the UA Latex dissertation template from [drakeasberry/UA_Dissertation_Template](https://github.com/drakeasberry/UA_Dissertation_Template). 
+An in-develop package for dissertation writing at the University of Arizona based off the [thesisdown](https://github.com/ismayc/thesisdown) R package and the UA Latex dissertation template from [drakeasberry/UA_Dissertation_Template](https://github.com/drakeasberry/UA_Dissertation_Template). 
 
 Again, this is early in development but I'm determined to work out the kinks for the good of the data science community (and myself) and get this working. If you'd like to contribute, please reach out. 
 
