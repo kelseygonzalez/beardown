@@ -340,8 +340,8 @@
   requirement.\\
   \vspace*{0.5in}
 
-  \noindent\underline{\makebox[4.0in][r]{}} \hspace{0.4in} Date:\@date \\
-  \textit{\@advisor} \\
+  \noindent\underline{\makebox[4.0in][r]{}} \hspace{0.4in} Date :\@date \\
+  \textbf{\@advisor} \\
   Dissertation Committee Chair \\
   \@department
 }
