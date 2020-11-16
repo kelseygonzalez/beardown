@@ -1,114 +1,104 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Masters/Doctoral Thesis
-% LaTeX Template
-% Version 2.5 (27/8/17)
+% This is the University of Arizona LaTeX thesis template.
+% Most of this file is based on the Reed College thesis template
+% for the document class was done by Sam Noble (SN), as well as this
+% template. Later comments etc. by Ben Salzberg (BTS). Additional
+% restructuring and APA support by Jess Youngberg (JY).
+% Your comments and suggestions are more than welcome; please email
+% them to cus@reed.edu
 %
-% This template was downloaded from:
-% http://www.LaTeXTemplates.com
+% See https://www.reed.edu/cis/help/LaTeX/index.html for help. There are a
+% great bunch of help pages there, with notes on
+% getting started, bibtex, etc. Go there and read it if you're not
+% already familiar with LaTeX.
 %
-% Version 2.x major modifications by:
-% Vel (vel@latextemplates.com)
-%
-% This template is based on a template by:
-% Steve Gunn (http://users.ecs.soton.ac.uk/srg/softwaretools/document/templates/)
-% Sunil Patel (http://www.sunilpatel.co.uk/thesis-template/)
-%
-% Template license:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-% Modifications made by Drake Asberry to make document compliant with
-% University of Arizona dissertation formatting Guide 2019-01-29
-% https://grad.arizona.edu/gsas/dissertations-theses/dissertation-and-thesis-formatting-guides
-%
-% Modifications made by Kelsey Gonzalez to make document compilable with Rmarkdown
-% on 2020-11-15
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Any line that starts with a percent symbol is a comment.
+% They won't show up in the document, and are useful for notes
+% to yourself and explaining commands.
+% Commenting also removes a line from the document;
+% very handy for troubleshooting problems. -BTS
 
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
+%%
+%% Preamble
+%%
+% \documentclass{<something>} must begin each LaTeX document
+\documentclass[12pt,twoside]{uathesis}
+% Packages are extensions to the basic LaTeX functions. Whatever you
+% want to typeset, there is probably a package out there for it.
+% Chemistry (chemtex), screenplays, you name it.
+% Check out CTAN to see: https://www.ctan.org/
+%%
+\usepackage{graphicx,latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb,amsthm}
+\usepackage{longtable,booktabs,setspace}
+\usepackage{chemarr} %% Useful for one reaction arrow, useless if you're not a chem major
+\usepackage[hyphens]{url}
+% Added by CII
+\usepackage{hyperref}
+\usepackage{lmodern}
+\usepackage{float}
+\floatplacement{figure}{H}
+% End of CII addition
+\usepackage{rotating}
 
-\documentclass[
-12pt, % The default document font size, options: 10pt, 11pt, 12pt
-%oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
-english, % ngerman for German
-doublespacing, % Single line spacing (singlespacing), alternatives: onehalfspacing or doublespacing
-%draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
-nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
-liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
-%toctotoc, % Uncomment to add the main table of contents to the table of contents
-%parskip, % Uncomment to add space between paragraphs
-%nohyperref, % Uncomment to not load the hyperref package
-headsepline, % Uncomment to get a line under the header
-chapterinoneline, % Uncomment to place the chapter title next to the number on one line
-%consistentlayout, % Uncomment to change the layout of the declaration, abstract and acknowledgements pages to match the default layout
-openany, % eliminates all extra blank pages from entire document
-]{DoctoralThesis} % The class file specifying the document structure
+% Next line commented out by CII
+%%% \usepackage{natbib}
+% Comment out the natbib line above and uncomment the following two lines to use the new
+% biblatex-chicago style, for Chicago A. Also make some changes at the end where the
+% bibliography is included.
+%\usepackage{biblatex-chicago}
+%\bibliography{thesis}
 
-\usepackage[utf8]{inputenc} % Required for inputting international characters
 
-\usepackage[T1]{fontenc} % Output font encoding for international characters
+% Added by CII (Thanks, Hadley!)
+% Use ref for internal links
+\renewcommand{\hyperref}[2][???]{\autoref{#1}}
+\def\chapterautorefname{Chapter}
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Subsection}
+% End of CII addition
 
-\usepackage{mathpazo} % Use the Palatino font by default
+% Added by CII
+\usepackage{caption}
+\captionsetup{width=5in}
+% End of CII addition
 
-\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
+% \usepackage{times} % other fonts are available like times, bookman, charter, palatino
 
-\addbibresource{example.bib} % The filename of the bibliography
+% Syntax highlighting #22
+$if(highlighting-macros)$
+  $highlighting-macros$
+$endif$
 
-\usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
-
-%----------------------------------------------------------------------------------------
-%	MARGIN SETTINGS
-%----------------------------------------------------------------------------------------
-
-\geometry{
-	paper = letterpaper, % Change to a4paper for international letter
-	inner = 1in, % Inner margin
-	outer=1in, % Outer margin
-	bindingoffset=.5in, % Binding offset
-	top=1in, % Top margin
-	bottom=1in, % Bottom margin
-	%showframe, % Uncomment to show how the type block is set on the page
-}
-
-%----------------------------------------------------------------------------------------
-%	THESIS INFORMATION
-%----------------------------------------------------------------------------------------
-% Replace content within green curly brackets to reflect your own work and names
-
-%%% new from KG on 11/15
 % To pass between YAML and LaTeX the dollar signs are added by CII
-\ttitle{$title$}
+\title{$title$}
 \author{$author$}
 % The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
 \date{$date$}
-\department{$department$}
-\university{$institution$}
+\division{$division$}
+\advisor{$advisor$}
+\institution{$institution$}
 \degree{$degree$}
-\chair{$advisor$}
 %If you have two advisors for some reason, you can use the following
 % Uncommented out by CII
-%$if(altadvisor)$
-%\altadvisor{$altadvisor$}
-%$endif$
-\facultyA{$member_A$}
-\facultyB{$member_B$}
-\facultyC{$member_C$}
-\facultyD{$member_D$}
-% End of KG addition
+$if(altadvisor)$
+\altadvisor{$altadvisor$}
+$endif$
+% End of CII addition
+\facnameA{$member_A$}
+\facnameB{$member_B$}
+\facnameC{$member_C$}
 
-\AtBeginDocument{
-\hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
-\hypersetup{pdfauthor=\author} % Set the PDF's author to your name
-\hypersetup{pdfkeywords=\keywordnames} % Set the PDF's keywords to your keywords
-\hypersetup{hidelinks} % Set all hyperlinks standard color text
-}
+%%% Remember to use the correct department!
+\department{$department$}
+% if you're writing a thesis in an interdisciplinary major,
+% uncomment the line below and change the text as appropriate.
+% check the Senior Handbook if unsure.
+%\thedivisionof{The Established Interdisciplinary Committee for}
+% if you want the approval page to say "Approved for the Committee",
+% uncomment the next line
+%\approvedforthe{Committee}
 
-%\usepackage{times} % Uncomment to use Times New Roman font
-
-
-% Copied from thesisdown by KG 11/15/2020
 % Added by CII
 %%% Copied from knitr
 %% maxwidth is the original width if it's less than linewidth
@@ -163,10 +153,6 @@ $preface$
 $abstract$
 }
 
-\abbreviations{
-$abbreviations$
-}
-
 $for(header-includes)$
 	$header-includes$
 $endfor$
@@ -174,233 +160,43 @@ $endfor$
 %%
 %% End Preamble
 %%
-
-
+%
 
 \begin{document}
 
-%\frontmatter % Uncomment to use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+% Everything below added by CII
+$if(title)$
+  \maketitle
+$endif$
 
-\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
+\frontmatter % this stuff will be roman-numbered
+\pagestyle{empty} % this removes page numbers from the frontmatter
 
-
-%-------------------------------------------------------------------------------------------------------------------------------
-%	Pre-Thesis Content
-%-------------------------------------------------------------------------------------------------------------------------------
-
-%----------------------------------------------------------------------------------------
-%	TITLE PAGE
-%----------------------------------------------------------------------------------------
-%
-% All requirements of the graduate college as of 2019-01-30
-% The title page must be the first page of your document (All pages must be numbered and match
-% the numbers listed in Table of Contents. However, a page number is not required to be printed
-% on the actual title page).
-% The title page must meet the following requirements:
-% Title is set in ALL CAPS
-% Student name matches official name in UAccess
-% Rule line appears
-% Official Department Name is Used
-% Degree is indicated correctly
-% Copyright year matches year of graduation on page
-
-\begin{titlepage}
-\begin{singlespacing} % needed for documents set to 1.5 or 2.0 spacing, Comment out otherwise
-\begin{center}
-
-\vfill
-
-\MakeUppercase{\ttitle}\\ %Thesis Title in ALL CAPS
-\vspace{0.4in}
-by\\ \vspace{0.4in}
-{\author}\\ % Places author name as specified in preamble
-\vspace{0.6in}
-\HRule \\[0.1cm] % Horizontal line
-Copyright \textcopyright\space\author\space{\the\year}\\ % Copyright Date
-
-\vspace{0.4in}
-
-A Dissertation Submitted to the Faculty of the\\ % University required text
-\vspace{0.4in}
-\MakeUppercase{\department} \\  % Department name in Small Caps
-\vspace{0.4in}
-In Partial Fulfillment of the Requirements \\ \medskip % University required text
-For the Degree of \\  % University required text
-\vspace{0.4in}
-\MakeUppercase{\degree} \\ % Thesis type
-\vspace{0.4in}
-In the Graduate College \\  % University required text
-\vspace{0.4in}
-\MakeUppercase{The \university} \\ % University name in Small Caps
-\vspace{0.6in}
-%\normalsize
-{\the\year}\\[4cm] % date
-%\includegraphics{Logo} % University/department logo - uncomment to place it
-
-\vfill
-\end{center}
-\end{singlespacing}% needed for documents set to 1.5 or 2.0 spacing, Comment out otherwise
-\end{titlepage}
-
-%\cleardoublepage %Uncomment to add blank page after Title page.
-
-
-\setcounter{page}{2} % Starts pagination at 2 on the Committee Approval Form with no page number displayed on Title page.
-
-%----------------------------------------------------------------------------------------
-%	COMMITTEE APPROVAL PAGE
-%----------------------------------------------------------------------------------------
-%
-% All requirements of the graduate college as of 2019-01-30
-% The committee approval page must be the second page of your document
-% The committee approval page must meet the following requirements:
-% Title on approval page matches title on page 1 (Title Page)
-% Dissertation chair (or co-chair) is indicated
-% All members and chair (or co-chairs) have signed the approval page
-% Date of defense is listed
-
-%\addchaptertocentry{Committee Approval Page} % Add the committee approval page to the table of contents
-\begin{singlespacing} % needed for documents set to 1.5 or 2.0 spacing, Comment out otherwise
-\begin{center}
-%\large
-
-THE \MakeUppercase{\university} \\
-GRADUATE COLLEGE
-\end{center}
-
-\vspace*{0.3in}
-
-\noindent As members of the Dissertation Committee, we certify that we have read the dissertation prepared by \author \space entitled "\ttitle "\space and recommend that it be accepted as fulfilling the dissertation requirement for the Degree of \degree.
-
-\vspace*{0.3in}
-
-\noindent\underline{\makebox[4.0in][r]{}} \hspace{0.4in} Date: \defensedate \\
-{\bfseries\chair}\\
-\emph{(Chair)} %This line can be commented out if necessary
-\vspace*{0.3in}
-
-\noindent\underline{\makebox[4.0in][r]{}} \hspace{0.4in} Date: \defensedate \\
-{\bfseries\facultyA}\\
-\emph{(Member)} %This line can be commented out if necessary
-\vspace*{0.3in}
-
-\noindent\underline{\makebox[4.0in][r]{}} \hspace{0.4in} Date: \defensedate \\
-{\bfseries\facultyB}\\
-\emph{(Member)} %This line can be commented out if necessary
-\vspace*{0.3in}
-
-\noindent\underline{\makebox[4.0in][r]{}} \hspace{0.4in} Date: \defensedate \\
-{\bfseries\facultyC}\\
-\emph{(Member)} %This line can be commented out if necessary
-\vspace*{0.5in}
-
-% If 4th committee member is needed, copy the preceding 4 lines, change to facnameD in copied lines
-% You will then need to adjust vertical spacing to keep committee approval page to 1 page length
-
-\noindent Final approval and acceptance of this dissertation is contingent upon the candidate's submission of the final copies of the dissertation to the Graduate College.
-
-\vspace*{0.2in}
-
-\noindent I hereby certify that I have read this dissertation prepared under my direction and recommend that it be accepted as fulfilling the dissertation requirement.
-\vspace*{0.5in}
-
-\noindent\underline{\makebox[4.0in][r]{}} \hspace{0.4in} Date: \defensedate \\
-Dissertation Director: \chair \\
-%{\bfseries \emph{Instructor \\ Hispanic Linguistics}} % Update hard-coded to job title and department
-\vfill
-\end{singlespacing}% needed for documents set to 1.5 or 2.0 spacing, Comment out otherwise
-
-
-
-%----------------------------------------------------------------------------------------
-%	STATEMENT BY AUTHOR
-%----------------------------------------------------------------------------------------
-%
-% No longer required for the graduate college as of 2019-01-30
-% Uncomment all lines in this section  with "%%" at the beginning if your document requires it
-
-%%\begin{statement}
-%%\begin{singlespacing} % needed for documents set to 1.5 or 2.0 spacing, Comment out otherwise
-%%\addchaptertocentry{\authorshipname} % Add the declaration to the table of contents
-
-%The following block of text was the required text of the Graduate College (2019-02-01)
-%%This dissertation has been submitted in partial fulfillment of the requirements for an advanced degree at the \university\space and is deposited in the University Library to be made available to borrowers under rules of the Library. \\ \smallskip
-
-%%Brief quotations from this dissertation are allowable without special permission, provided that an accurate acknowledgement of the source is made. Requests for permission for extended quotation from or reproduction of this manuscript in whole or in part may be granted by the copyright holder.
-
-%%\vspace*{0.3in}
-%%\begin{center}
-%%SIGNED: \author
-%%\end{center}
-%%\end{singlespacing}% needed for documents set to 1.5 or 2.0 spacing, Comment out otherwise
-%%\end{statement}
-
-
-%----------------------------------------------------------------------------------------
-%	ACKNOWLEDGEMENTS
-%----------------------------------------------------------------------------------------
-%
-% Acknowledgements are not a necessary item.
 $if(acknowledgements)$
   \begin{acknowledgements}
     $acknowledgements$
   \end{acknowledgements}
 $endif$
 
-%----------------------------------------------------------------------------------------
-%	DEDICATION
-%----------------------------------------------------------------------------------------
-%
-% Dedications are not a necessary item.
-$if(dedication)$
-  \begin{dedication}
-    $dedication$
-  \end{dedication}
+$if(preface)$
+  \begin{preface}
+    $preface$
+  \end{preface}
 $endif$
 
-%----------------------------------------------------------------------------------------
-%	LIST OF CONTENTS/FIGURES/TABLES PAGES
-%----------------------------------------------------------------------------------------
-%
-% Table of Contents (TOC) must include:
-% a: all major sections with the document in a consistent manner
-% b: section headings in document must match their listings (exact words) in TOC
-%
 $if(toc)$
   \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
   \setcounter{tocdepth}{$toc-depth$}
   \tableofcontents
 $endif$
 
-%
-% Lists of figures and tables must include accurate page numbers
-% Prints the list of figures
+$if(lot)$
+  \listoftables
+$endif$
+
 $if(lof)$
   \listoffigures
 $endif$
-
-% Prints the list of tables
- $if(lot)$
-   \listoftables
- $endif$
-
-%----------------------------------------------------------------------------------------
-%	ABBREVIATIONS
-%----------------------------------------------------------------------------------------
-%
-% Abbreviations are not a necessary item.
-%
-$if(abbreviations)$
-  \begin{abbreviations}
-    $abbreviations$
-  \end{abbreviations}
-$endif$
-
-
-%----------------------------------------------------------------------------------------
-%	Abstract
-%----------------------------------------------------------------------------------------
-% This is required to appear before the first chapter of the dissertation
 
 $if(abstract)$
   \begin{abstract}
@@ -408,14 +204,19 @@ $if(abstract)$
   \end{abstract}
 $endif$
 
-
-%----------------------------------------------------------------------------------------
-%	THESIS CONTENT
-%----------------------------------------------------------------------------------------
+$if(dedication)$
+  \begin{dedication}
+    $dedication$
+  \end{dedication}
+$endif$
 
 \mainmatter % here the regular arabic numbering starts
 \pagestyle{fancyplain} % turns page numbering back on
 
 $body$
 
+
+% Index?
+
 \end{document}
+

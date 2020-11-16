@@ -1,17 +1,13 @@
-# thesisdown <img src="man/figures/thesisdown_hex.png" align="right" width=200 />
+# beardown <img src="man/figures/beardown_hex.png" align="right" width=200 />
 
-A very early-in-develop package for dissertation writing at the University of Arizona based off the thesisdown R package and the UA Latex dissertation template from [drakeasberry/UA_Dissertation_Template](https://github.com/drakeasberry/UA_Dissertation_Template). 
+An in-develop package for dissertation writing at the University of Arizona based off the [thesisdown](https://github.com/ismayc/beardown) R package and the UA Latex dissertation template from [drakeasberry/UA_Dissertation_Template](https://github.com/drakeasberry/UA_Dissertation_Template). 
 
 Again, this is early in development but I'm determined to work out the kinks for the good of the data science community (and myself) and get this working. If you'd like to contribute, please reach out. 
 
 
+### Using beardown
 
-
-### Using thesisdown from Chester's GitHub
-
-Special thanks to [Ben Marwick](https://github.com/benmarwick) for helping to add a lot more clarity to the directions below from the [README of his spin-off `huskydown` package](https://github.com/benmarwick/huskydown/blob/master/README.md).
-
-Using **thesisdown** has some prerequisites which are described below. To compile PDF documents using **R**, you are going to need to have LaTeX installed. By far the easiest way to install LaTeX on any platform is with the [tinytex](https://yihui.name/tinytex/) R package:
+Using **beardown** has some prerequisites which are described below. To compile PDF documents using **R**, you are going to need to have LaTeX installed. By far the easiest way to install LaTeX on any platform is with the [tinytex](https://yihui.name/tinytex/) R package:
 
 ```{r}
 install.packages(c('tinytex', 'rmarkdown'))
@@ -26,16 +22,16 @@ You may need to install a few extra LaTeX packages on your first attempt to knit
 tinytex::tlmgr_install("babel-portuges")
 ```
 
-To use **thesisdown** from [RStudio](https://www.rstudio.com/products/rstudio/download/):
+To use **beardown** from [RStudio](https://www.rstudio.com/products/rstudio/download/):
 
-1) Ensure that you have already installed LaTeX and the fonts described above, and are using the latest version of [RStudio](https://www.rstudio.com/products/rstudio/download/). You can use `thesisdown` without RStudio. For example, you can write the Rmd files in your favourite text editor (e.g. [Atom](https://atom.io/), [Notepad++](https://notepad-plus-plus.org/)). But RStudio is probably the easiest tool for writing both R code and text in your thesis. It also provides a nice way to build your thesis while editing. We'll proceed assuming that you have decided to use the RStudio workflow.
+1) Ensure that you have already installed LaTeX and the fonts described above, and are using the latest version of [RStudio](https://www.rstudio.com/products/rstudio/download/). You can use `beardown` without RStudio. For example, you can write the Rmd files in your favourite text editor (e.g. [Atom](https://atom.io/), [Notepad++](https://notepad-plus-plus.org/)). But RStudio is probably the easiest tool for writing both R code and text in your thesis. It also provides a nice way to build your thesis while editing. We'll proceed assuming that you have decided to use the RStudio workflow.
 
-2) Install the **bookdown** and **thesisdown** packages. Note that **thesisdown** is not available on CRAN at the moment and that's why `install.packages("thesisdown")` won't work. Use `remotes::install_github()` as shown below instead to install the package.
+2) Install the **bookdown** and **beardown** packages. Note that **beardown** is not available on CRAN at the moment and that's why `install.packages("beardown")` won't work. Use `remotes::install_github()` as shown below instead to install the package.
 
 ```r
 if (!require("remotes")) install.packages("remotes", repos = "https://cran.rstudio.org")
 remotes::install_github("rstudio/bookdown")
-remotes::install_github("ismayc/thesisdown")
+remotes::install_github("kelseygonzalez/beardown")
 ```
 
 Note that you may need to restart RStudio at this point for the following dialog to show up.
