@@ -1,61 +1,11 @@
 # thesisdown <img src="man/figures/thesisdown_hex.png" align="right" width=200 />
 
-This project was inspired by the [bookdown](https://github.com/rstudio/bookdown) package and is an updated version of my Senior Thesis template in the `reedtemplates` package [here](https://github.com/ismayc/reedtemplates). It was originally designed to only work with the Reed College LaTeX template, but has since been adapted to work with many different institutions by many different individuals. Check out the [**Customizing thesisdown to your institution**](https://github.com/ismayc/thesisdown#customizing-thesisdown-to-your-institution) section below for examples.
+A very early-in-develop package for dissertation writing at the University of Arizona based off the thesisdown R package and the UA Latex dissertation template from [drakeasberry/UA_Dissertation_Template](https://github.com/drakeasberry/UA_Dissertation_Template). 
 
-Currently, the PDF and gitbook versions are fully-functional.  The word and epub versions are developmental, have no templates behind them, and are essentially calls to the appropriate functions in bookdown.
-
-If you are new to working with `bookdown`/`rmarkdown`, please read over the documentation available in the `gitbook` template at https://thesisdown.netlify.com/.  This is also available below at https://ismayc.github.io/thesisdown_book.
-
-The current output for the four versions is here:
-- [PDF](https://github.com/ismayc/thesisdown_book/blob/gh-pages/thesis.pdf) (Generating LaTeX file is available [here](https://github.com/ismayc/thesisdown_book/blob/gh-pages/thesis.tex) with other files in the [book directory](https://github.com/ismayc/thesisdown_book/tree/gh-pages).)
-- [Word](https://github.com/ismayc/thesisdown_book/blob/gh-pages/thesis.docx)
-- [ePub](https://github.com/ismayc/thesisdown_book/blob/gh-pages/thesis.epub)
-- [gitbook](https://ismayc.github.io/thesisdown_book)
-
-Under the hood, the Reed College LaTeX template is used to ensure that documents conform precisely to submission standards. At the same time, composition and formatting can be done using lightweight [markdown](https://rmarkdown.rstudio.com/authoring_basics.html) syntax, and **R** code and its output can be seamlessly included using [rmarkdown](https://rmarkdown.rstudio.com).
-
-## Customizing thesisdown to your institution
-
-In an ideal world, this package would support a variety of different LaTeX templates from a wide range of institutions and we'd love to get it there at some point. Until that time, realize that this was designed to only work with the Reed College LaTeX template but others have adapted it to work with their institutions.  Here are some that have customized it to fit their needs.  It is recommended you review how they changed the files by comparing their repositories to this one and then make tweaks to yours as needed.  Feel free to file an issue on this repo if you have questions/troubles.
-
-Have you created a thesisdown template for your institution and would like to have it included here? Make a PR [similar to the commit done to include `jayhawkdown`](https://github.com/ismayc/thesisdown/commit/760113a076767cf67b6e22339e398bd3f15305c5). I'll review it and merge it in. Let's keep the list going!
+Again, this is early in development but I'm determined to work out the kinks for the good of the data science community (and myself) and get this working. If you'd like to contribute, please reach out. 
 
 
-|College/University                              |Repository                                                                                    |Based on                                                        |
-|:---------------------------------------|:---------------------------------------------------------------------------------------------|:---------------------------------------------------------------|
-|American University                    |[SimonHeuberger/eagledown](https://github.com/SimonHeuberger/eagledown)                     |[benmarwick/huskydown](https://github.com/benmarwick/huskydown) |
-|Brock University                        |[brentthorne/brockdown](https://github.com/brentthorne/brockdown)                             |[zkamvar/beaverdown](https://github.com/zkamvar/beaverdown)     |
-|École Doctorale de Mathématiques Hadamard |[abichat/hadamardown](https://github.com/abichat/hadamardown)                         |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|Drexel University                       |[tbradley1013/dragondown](https://github.com/tbradley1013/dragondown)                         |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|Duke University                         |[mine-cetinkaya-rundel/thesisdowndss](https://github.com/mine-cetinkaya-rundel/thesisdowndss) |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|Graduate Institute of International and Development Studies          |[jhollway/iheiddown](https://github.com/jhollway/iheiddown)  |[ulyngs/oxforddown](https://github.com/ulyngs/oxforddown) |
-|Heidelberg University, Faculty of Biosciences          |[nkurzaw/heididown](https://github.com/nkurzaw/heididown)  |[phister/huwiwidown](https://github.com/phister/huwiwidown) |
-|Humboldt University of Berlin          |[phister/huwiwidown](https://github.com/phister/huwiwidown)  |[ismayc/thesisdown](https://github.com/ismayc/thesisdown) |
-|Kansas State University                 |[emraher/wildcatdown](https://github.com/emraher/wildcatdown)                                 |[benmarwick/huskydown](https://github.com/benmarwick/huskydown) |
-|Massachusetts Institute of Technology                |[ratatstats/manusdown](https://github.com/ratatstats/manusdown)                                 |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)  |
-|Oregon State University                 |[zkamvar/beaverdown](https://github.com/zkamvar/beaverdown)                                   |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|Oxford University                       |[davidplans/oxdown](https://github.com/davidplans/oxdown)                                     |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|Smith College                           |[SmithCollege-SDS/pioneerdown](https://github.com/SmithCollege-SDS/pioneerdown)                             |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|Southampton University                  |[dr-harper/sotonthesis](https://github.com/dr-harper/sotonthesis)                             |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|Stanford University                     |[mhtess/treedown](https://github.com/mhtess/treedown)                                         |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|Universidade Federal do Rio de Janeiro               |[COPPE-UFRJ/coppedown](https://github.com/COPPE-UFRJ/coppedown)             |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|Université Paris-Saclay               |[abichat/hadamardown](https://github.com/abichat/hadamardown)                           |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|University College London               |[benyohaiphysics/thesisdownUCL](https://github.com/benyohaiphysics/thesisdownUCL)             |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|University of California, Davis         |[ryanpeek/aggiedown](https://github.com/ryanpeek/aggiedown)                                   |[DanOvando/gauchodown](https://github.com/DanOvando/gauchodown) |
-|University of California, Santa Barbara |[DanOvando/gauchodown](https://github.com/DanOvando/gauchodown)                               |[benmarwick/huskydown](https://github.com/benmarwick/huskydown) |
-|University of Florida                   |[ksauby/thesisdownufl](https://github.com/ksauby/thesisdownufl)                               |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|University of Freiburg                  |[vivekbhr/doctorRbite](https://github.com/vivekbhr/doctorRbite)                               |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|University of Kansas                    |[wjakethompson/jayhawkdown](https://github.com/wjakethompson/jayhawkdown)                     |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|University of Manchester                |[juliov/uomthesisdown](https://github.com/JulioV/uomthesisdown)                               |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|University of Minnesota                 |[zief0002/qmedown](https://github.com/zief0002/qmedown)                                       |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|University of New South Wales           |[rensa/unswthesisdown](https://github.com/rensa/unswthesisdown)                               |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|University of Salzburg                  |[irmingard/salzburgthesisdown](https://github.com/irmingard/salzburgthesisdown)               |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|University of Toronto                        |[mattwarkentin/torontodown](https://github.com/mattwarkentin/torontodown)                             |[zkamvar/beaverdown](https://github.com/zkamvar/beaverdown)     |
-|University of Washington                |[benmarwick/huskydown](https://github.com/benmarwick/huskydown)                               |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|TU Wien                                 |[ben-schwen/robotdown](https://github.com/ben-schwen/robotdown)                               |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|University of Bristol                                 |[mattlee821/bristolthesis](https://github.com/mattlee821/bristolthesis)                               |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|Universidade Federal de Santa Catarina  | [lfpdroubi/ufscdown](https://github.com/lfpdroubi/ufscdown)                                  |[ismayc/thesisdown](https://github.com/ismayc/thesisdown)       |
-|Universiteit van Amsterdam              | [lcreteig/amsterdown](https://github.com/lcreteig/amsterdown)                                |[benmarwick/huskydown](https://github.com/benmarwick/huskydown) |
+
 
 ### Using thesisdown from Chester's GitHub
 

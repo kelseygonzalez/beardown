@@ -1,16 +1,17 @@
 library(hexSticker)
 
 # https://pixabay.com/illustrations/graduation-hats-throw-graduation-4906359/
-cap <- "images/happy_cap.png"
+cap <- "images/wildcat.png"
 
 sticker(cap,
-  package = "thesisdown",
+
+  package = "beardown",
   p_family = "Aller_Rg",
-  p_size = 7, p_color = "#5B5040", # p_x = 4, p_y = 1.4,
-  s_x = 1, s_y = .8, s_width = 0.75, s_height = 0.75,
-  h_fill = "#FAECC7", h_color = "#5B5040",
-  filename = "thesisdown_hex.png",
-  url = "thesisdown.rbind.io"
+  p_size = 7, p_color = "#1E5288", # p_x = 4, p_y = 1.4,
+  s_x = 1, s_y = .8, s_width = 0.5, s_height = 0.5,
+  h_fill = "#E2E9EB", h_color = "#1E5288",
+  filename = "images/beardown_hex.png",
+  url = "https://github.com/kelseygonzalez/beardown"
 )
 
 # Final image was revised in Adobe Illustrator
