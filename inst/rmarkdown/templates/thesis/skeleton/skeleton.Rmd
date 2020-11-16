@@ -3,8 +3,13 @@ title: 'My Final College Paper'
 author: 'Your R. Name'
 date: 'May 20xx'
 institution: 'Reed College'
-division: 'Mathematics and Natural Sciences'
+department: 'Mathematics and Natural Sciences'
 advisor: 'Advisor F. Name'
+member_A: 'Member A. Name'
+member_B: 'Member B. Name'
+member_C: 'Member C. Name'
+member_D: 'Member D. Name'
+
 # If you have more two advisors, un-silence line 7
 #altadvisor: 'Your Other Advisor'
 department: 'Mathematics'
@@ -44,7 +49,7 @@ preface: |
 # Specify the location of the bibliography below
 bibliography: bib/thesis.bib
 # Download your specific csl file and refer to it in the line below.
-csl: csl/apa.csl
+csl: csl/asa.csl
 lot: true
 lof: true
 ---

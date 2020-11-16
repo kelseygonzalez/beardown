@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Masters/Doctoral Thesis 
+% Masters/Doctoral Thesis
 % Class File
 % Version 1.6 (27/8/17)
 %
@@ -19,7 +19,7 @@
 % Class license:
 % LPPL v1.3c (http://www.latex-project.org/lppl)
 %
-% Modifications made by Drake Asberry to make document compliant with 
+% Modifications made by Drake Asberry to make document compliant with
 % University of Arizona dissertation formatting Guide 2019-01-29
 % https://grad.arizona.edu/gsas/dissertations-theses/dissertation-and-thesis-formatting-guides
 %
@@ -29,9 +29,10 @@
 %	CLASS DEFINITION AND PARAMETERS
 %----------------------------------------------------------------------------------------
 
-\NeedsTeXFormat{LaTeX2e}[1996/12/01]
+\NeedsTeXFormat{LaTeX2e}
 \newcommand{\classname}{DoctoralThesis}
 \ProvidesClass{\classname}[2017/08/27 v1.6 LaTeXTemplates.com]
+\ProcessOptions\relax
 \providecommand{\baseclass}{book}
 \RequirePackage{etoolbox}
 \RequirePackage{xparse}
@@ -59,155 +60,210 @@
 
 \LoadClass{\baseclass}
 
-%  Simple interface for the user  to customize the chapter titles 
-% If requirements change and Chapter/Appendix does not need to appear before Chapter #
-% or Appendix Letter, Delete "\@chapapp\space" in the section below.
-\ProvideDocumentCommand{\abovechapterskip}{}{\vspace*{0pt}}
-\ProvideDocumentCommand{\chapterbelowskip}{}{\vspace*{20pt}} % reduced from 40pt in original template
-\ProvideDocumentCommand{\chapterinbetweenskip}{}{\vspace*{20pt}}
-\ProvideDocumentCommand{\autodot}{}{}
-\ProvideDocumentCommand{\mdtChapapp}{}{}
-\ProvideDocumentCommand{\chapteralign}{}{\raggedright}
-\ProvideDocumentCommand{\chapterfont}{}{\LARGE\bfseries}
-\ProvideDocumentCommand{\chapterprefixfont}{}{\LARGE\bfseries}
-\DeclareDocumentCommand{\@makechapterhead}{ m }{%
-	\abovechapterskip
-	{\parindent \z@ \chapteralign \normalfont
-		\ifnum \c@secnumdepth >\m@ne
-		\if@mainmatter
-		\ifbool{chapteroneline}{%
-			\chapterfont \mdtChapapp \@chapapp\space \thechapter\autodot\enspace
-		}{%
-			\chapterprefixfont \@chapapp\space \thechapter
-			\par\nobreak
-			\chapterinbetweenskip
-		}%
-		\fi
-		\fi
-		\interlinepenalty\@M%
-		\chapterfont #1\par\nobreak
-		\chapterbelowskip
-	}
-	\thispagestyle{\chapter@p@gestyle}
-}
-\def\@makeschapterhead#1{%
-	\abovechapterskip
-	{\parindent \z@ \chapteralign
-		\normalfont
-		\interlinepenalty\@M
-		\chapterfont  #1\par\nobreak
-		\chapterbelowskip
-	}
-	\thispagestyle{\chapter@p@gestyle}
-}
-
-
-% Addchap provides unnumbered chapters with an entry in the table of contents as well as an updated header
-\ProvideDocumentCommand{\addchap}{ s o m }{%
-	\chapter*{#3}%
-	\markboth{}{}%
-	\IfBooleanTF{#1}{%
-	}{%
-		\IfNoValueTF{#2}{%
-			\addchaptertocentry{#3}%
-			\markboth{\MakeMarkcase{#3}}{\MakeMarkcase{#3}}%
-		}{%
-			\addchaptertocentry{#2}%
-			\markboth{\MakeMarkcase{#2}}{\MakeMarkcase{#2}}%
-		}%
-	}%
-}%
-
-\ProvideDocumentCommand{\addsec}{ s o m }{%
-	\section*{#3}%
-	\markright{}%
-	\IfBooleanTF{#1}{%
-	}{%
-		\IfNoValueTF{#2}{%
-			\addcontentsline{toc}{section}{#3}%
-			\markright{\MakeMarkcase{#3}}%%
-		}{%
-			\addcontentsline{toc}{section}{#2}%
-			\markright{\MakeMarkcase{#2}}%
-		}%
-	}%
-}%
-
-%----------------------------------------------------------------------------------------
-%	CLASS OPTIONS
-%----------------------------------------------------------------------------------------
-
-\ifbool{parskip}{\RequirePackage{parskip}} % If the parskip option is passed to the class, require the parskip package 
-
-
-\ifbool{listtoc}{% If the liststotoc option has been passed to the class, add the lists to the table of contents
-	\patchcmd{\listoftables}{\@starttoc{lot}}{%
-		\addchaptertocentry{\listtablename}\@starttoc{lot}%
-	}{}{}%
-	\patchcmd{\listoffigures}{\@starttoc{lof}}{%
-		\addchaptertocentry{\listfigurename}\@starttoc{lof}%
-	}{}{}%
-}
-
-\ifbool{toctoc}{% If the toctotoc options has been passed to the class, add the table of contents to the table of contents
-	\patchcmd{\tableofcontents}{\@starttoc{toc}%
-}{%
-	\addchaptertocentry{\contentsname}\@starttoc{toc}}{}{}%
-}
-
-\patchcmd{\tableofcontents}{\MakeUppercase}{\MakeMarkcase}{}{}
-\patchcmd{\tableofcontents}{\MakeUppercase}{\MakeMarkcase}{}{}
-\patchcmd{\listoffigures}{\MakeUppercase}{\MakeMarkcase}{}{}
-\patchcmd{\listoffigures}{\MakeUppercase}{\MakeMarkcase}{}{}
-\patchcmd{\listoftables}{\MakeUppercase}{\MakeMarkcase}{}{}
-\patchcmd{\listoftables}{\MakeUppercase}{\MakeMarkcase}{}{}
-
-% If the option `nolistspacing' is given, the spacing in the different lists is reduced to single spacing. This option is only useful, if the spacing of the document has been changed to onehalfspacing or doublespacing.
-\ifbool{nolistspace}{
-	\patchcmd{\listoffigures}{%
-		\@starttoc{lof}
-	}{%
-		\begingroup%
-		\singlespace\@starttoc{lof}\endgroup%
-	}{}{}%
-	\patchcmd{\listoftables}{%
-		\@starttoc{lot}
-	}{%
-		\begingroup%
-		\singlespace\@starttoc{lot}\endgroup%
-	}{}{}%
-	\patchcmd{\tableofcontents}{%
-		\@starttoc{toc}
-	}{%
-		\begingroup%
-		\singlespace\@starttoc{toc}\endgroup%
-	}{}{}%
+% Added by CII
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
+\usepackage{color}
+%\newcommand{\VerbBar}{|}
+%\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{verbatim}{Verbatim}{xleftmargin=-1em}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% End of CII add
+
+%%%%%%
+% This gives us rules below the headers
+\RequirePackage{fancyhdr}
+% Added by CII to produce nice looking code in BeginVerbatimEnvironment
+\RequirePackage{fancyvrb}
+\AtBeginDocument{%
+  \fancyhf{}
+  \fancyhead[LE,RO]{\thepage}
+%  \fancyhead[RE]{\slshape \leftmark}
+%  \fancyhead[LO]{\slshape \rightmark}
+%	The above makes your headers in all caps. If you would like different headers, choose one of the following options (be sure to remove the % symbol from both the right and left headers):
+	 \fancyhead[RE]{\slshape \nouppercase \leftmark} % This makes the headers on the RIGHT side pages be italic and use lowercase With Capitals When Specified.
+	\fancyhead[LO]{\slshape \nouppercase \rightmark} % This does the same thing to the LEFT side pages
+%	or
+%	\fancyhead[RE]{\scshape \leftmark} % The RIGHT headers will be in small caps.
+%	\fancyhead[LO]{\scshape \rightmark} %  And so will the LEFT headers
+  \pagestyle{fancy}
+%%%%
 
 
-%----------------------------------------------------------------------------------------
-%	REQUIRED PACKAGES
-%----------------------------------------------------------------------------------------
+% Stolen from book.cls and modified
+\let\RToldchapter\chapter
+\renewcommand{\chapter}{\if@openright\RTcleardoublepage
+		    \else\clearpage\fi
+		    \thispagestyle{empty}%
+		    \global\@topnum\z@
+		    \@afterindentfalse
+		    \secdef\@chapter\@schapter}
 
-\RequirePackage{babel} % Required for automatically changing names of document elements to languages besides english
+% Stolen from book.cls PBC 5/12/05
+% Using this to actually show "Chapter 1" in TOC instead of "1"
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                       \if@mainmatter
+                         \refstepcounter{chapter}%
+                         \typeout{\@chapapp\space\thechapter.}%
+                         \addcontentsline{toc}{chapter}%
+                         {\@chapapp\space\thechapter:\space#1}%
+                       \else
+                         \addcontentsline{toc}{chapter}{#1}%
+                       \fi
+                    \else
+                      \addcontentsline{toc}{chapter}{#1}%
+                    \fi
+                    \chaptermark{#1}%
+                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}
 
-\RequirePackage{scrbase} % Required for handling language-dependent names of sections/document elements
+\newcommand{\RTcleardoublepage}{
+	\clearpage\if@twoside \ifodd\c@page\else
+	\thispagestyle{empty}\hbox{}\newpage
+	\if@twocolumn\hbox{}\newpage\fi\fi\fi}
 
-\RequirePackage{scrhack} % Loads fixes for various packages
+\let\RToldcleardoublepage\cleardoublepage
+\renewcommand{\cleardoublepage}{\RTcleardoublepage}
 
-\RequirePackage{setspace} % Required for changing line spacing
+% adjust margins for binding  (changed 2007-04-24 tgp)
+\setlength{\oddsidemargin}{.5in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.0in}
+\setlength{\textheight}{9.0in}
+\setlength\topmargin{0in}
+\addtolength\topmargin{-\headheight}
+\addtolength\topmargin{-\headsep}
 
-\RequirePackage{longtable} % Required for tables that span multiple pages (used in the symbols, abbreviations and physical constants pages)
+%\setlength{\oddsidemargin}{.6in}
+%\setlength{\evensidemargin}{0in}
+%\setlength{\textwidth}{5.9in}
+\addtolength\headheight{2.5pt}
+%\addtolength\topmargin{-\headheight}
+%\addtolength\topmargin{-\headsep}
+%\addtolength\textheight{1in}
+%\addtolength\textheight{\headheight}
+%\addtolength\textheight{\headsep}
 
-\RequirePackage{siunitx} % Required for \SI commands
 
-\RequirePackage{graphicx} % Required to include images
-\graphicspath{{Figures/}{./}} % Specifies where to look for included images
 
-\RequirePackage{booktabs} % Required for better table rules
 
-\RequirePackage{caption} % Required for customising the captions
-\captionsetup{justification=centerlast,font=small,labelfont=sc,margin=50pt}
+
+\renewcommand\l@chapter[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \vskip 1.0em \@plus\p@
+    \setlength\@tempdima{1.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\normalfont
+      \leaders\hbox{$\m@th \mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill
+      \nobreak\hb@xt@\@pnumwidth{\bfseries \hss #2}\par
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
+
+
+	%%% Added by CII
+	\newenvironment{acknowledgements}{%
+	  \if@twocolumn
+	    \@restonecoltrue\onecolumn
+	  \else
+	    \@restonecolfalse
+	  \fi
+	  \chapter*{Acknowledgements}
+	  \fontsize{12}{14}\selectfont
+	}{\clearpage \if@restonecol\twocolumn\fi}%
+
+	\newenvironment{preface}{%
+	  \if@twocolumn
+	    \@restonecoltrue\onecolumn
+	  \else
+	    \@restonecolfalse
+	  \fi
+	  \chapter*{Preface}
+	  \fontsize{12}{14}\selectfont
+	}{\clearpage \if@restonecol\twocolumn\fi}%
+	% End of CII add
+
+	\newenvironment{abstract}{%
+	  \if@twocolumn
+	    \@restonecoltrue\onecolumn
+	  \else
+	    \@restonecolfalse
+	  \fi
+	  \chapter*{Abstract}
+	  \fontsize{12}{14}\selectfont
+	}{\clearpage \if@restonecol\twocolumn\fi}%
+
+	\newenvironment{dedication}{%
+	  \if@twocolumn
+	    \@restonecoltrue\onecolumn
+	  \else
+	    \@restonecolfalse
+	  \fi
+	  \chapter*{Dedication}
+	  \fontsize{12}{14}\selectfont
+	}{\clearpage \if@restonecol\twocolumn\fi}%
+
+
+	\ifx\@pdfoutput\@undefined
+	  \newcommand{\RTpercent}{\@percentchar\space}
+	  \AtBeginDvi{\special{!\RTpercent Reed College LaTeX Thesis Class 2001/12/04 SN}}
+	  \AtBeginDvi{\special{rawpostscript \RTpercent Reed College LaTeX Thesis Class 2001/12/04 SN}}
+	\else
+	  \AtEndDocument{\pdfinfo{/Creator	(Reed College LaTeX Thesis Class 2001/12/04 SN)}}
+	\fi
+
+
+	% Added by CII
+	\renewcommand{\title}[1]{\def\@title{#1}}
+	%\newcommand{\Shorttitle}[1]{\def\@Shorttitle{#1}}
+	\newcommand{\Plainauthor}[1]{\def\@Plainauthor{#1}}
+	\newcommand{\Abstract}[1]{\def\@Abstract{#1}}
+	%\newcommand{\Keywords}[1]{\def\@Keywords{#1}}
+	%\newcommand{\Plainkeywords}[1]{\def\@Plainkeywords{#1}}
+	\newcommand{\Acknowledgements}[1]{\def\@Acknowledgements{#1}}
+	\newcommand{\Dedication}[1]{\def\@Dedication{#1}}
+	\newcommand{\Preface}[1]{\def\@Preface{#1}}
+	% End of CII add
+
 
 %----------------------------------------------------------------------------------------
 %	DEFINE CUSTOM THESIS INFORMATION COMMANDS
@@ -220,22 +276,16 @@
 }
 \DeclareDocumentCommand{\author}{m}{\newcommand{\authorname}{#1}\renewcommand{\@author}{#1}}
 \NewDocumentCommand{\chair}{m}{\newcommand{\chairname}{#1}} % added to template
-\NewDocumentCommand{\cochair}{m}{\newcommand{\cochairname}{#1}} % added to template
-\NewDocumentCommand{\examiner}{m}{\newcommand{\examname}{#1}}
 \NewDocumentCommand{\degree}{m}{\newcommand{\degreename}{#1}}
-\NewDocumentCommand{\addresses}{m}{\newcommand{\addressname}{#1}}
 \NewDocumentCommand{\university}{m}{\newcommand{\univname}{#1}}
 \NewDocumentCommand{\department}{m}{\newcommand{\deptname}{#1}}
-\NewDocumentCommand{\group}{m}{\newcommand{\groupname}{#1}}
 \NewDocumentCommand{\facultyA}{m}{\newcommand{\facnameA}{#1}} % added to template
 \NewDocumentCommand{\facultyB}{m}{\newcommand{\facnameB}{#1}} % added to template
 \NewDocumentCommand{\facultyC}{m}{\newcommand{\facnameC}{#1}} % added to template
 \NewDocumentCommand{\facultyD}{m}{\newcommand{\facnameD}{#1}} % added to template
-\NewDocumentCommand{\subject}{m}{\newcommand{\subjectname}{#1}}
-\NewDocumentCommand{\keywords}{m}{\newcommand{\keywordnames}{#1}}
-\NewDocumentCommand{\defense}{m}{\newcommand{\defensedate}{#1}} % added to template
+\NewDocumentCommand{\date}{m}{\newcommand{\date}{#1}} % added to template
 
-\newcommand{\checktoopen}{% New command to move content to the next page which prints to the next odd page if twosided mode is active  
+\newcommand{\checktoopen}{% New command to move content to the next page which prints to the next odd page if twosided mode is active
 	\if@openright\cleardoublepage\else\clearpage\fi
 	\ifdef{\phantomsection}{\phantomsection}{}% The \phantomsection command is necessary for hyperref to jump to the correct page
 }
@@ -307,8 +357,8 @@
 \pagestyle{thesis}
 \ifbool{headsepline}{\KOMAoption{headsepline}{true}}{}
 \PreventPackageFromLoading[\ClassError{\classname}{Package `fancyhdr' is
-incompatible\MessageBreak with this class}{The pagesyles are defined 
-	using package `scrlayer-scrpage', please consult the\MessageBreak 
+incompatible\MessageBreak with this class}{The pagesyles are defined
+	using package `scrlayer-scrpage', please consult the\MessageBreak
 KOMA-script documentation for details.}]{fancyhdr}
 
 
