@@ -15,8 +15,8 @@ tinytex::install_tinytex()
 # after restarting RStudio, confirm that you have LaTeX with 
 tinytex:::is_tinytex() 
 ```
-
-You may need to install a few extra LaTeX packages on your first attempt to knit as well. Here is one such example of how to do so:
+ 
+You may need to install a few extra LaTeX packages on your first attempt to knit as well. This is not a requirement, but an example of how to do so: 
 
 ```{r}
 tinytex::tlmgr_install("babel-portuges")
