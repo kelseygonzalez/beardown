@@ -4,7 +4,7 @@
 # the template files for the thesis and also two functions
 # used for labeling and referencing
 if (!require(remotes)) {
-  if (params$`Install needed packages for {thesisdown}`) {
+  if (params$`Install needed packages for {beardown}`) {
     install.packages("remotes", repos = "https://cran.rstudio.com")
   } else {
     stop(
@@ -16,7 +16,7 @@ if (!require(remotes)) {
   }
 }
 if (!require(dplyr)) {
-  if (params$`Install needed packages for {thesisdown}`) {
+  if (params$`Install needed packages for {beardown}`) {
     install.packages("dplyr", repos = "https://cran.rstudio.com")
   } else {
     stop(
@@ -28,7 +28,7 @@ if (!require(dplyr)) {
   }
 }
 if (!require(ggplot2)) {
-  if (params$`Install needed packages for {thesisdown}`) {
+  if (params$`Install needed packages for {beardown}`) {
     install.packages("ggplot2", repos = "https://cran.rstudio.com")
   } else {
     stop(
@@ -40,7 +40,7 @@ if (!require(ggplot2)) {
   }
 }
 if (!require(bookdown)) {
-  if (params$`Install needed packages for {thesisdown}`) {
+  if (params$`Install needed packages for {beardown}`) {
     install.packages("bookdown", repos = "https://cran.rstudio.com")
   } else {
     stop(
@@ -52,19 +52,18 @@ if (!require(bookdown)) {
   }
 }
 if (!require(thesisdown)) {
-  if (params$`Install needed packages for {thesisdown}`) {
-    remotes::install_github("ismayc/thesisdown")
+  if (params$`Install needed packages for {beardown}`) {
+    remotes::install_github("kelseygonzalez/beardown")
   } else {
     stop(
       paste(
         "You need to run",
-        'remotes::install_github("ismayc/thesisdown")',
+        'remotes::install_github("kelseygonzalez/beardown")',
         "first in the Console."
       )
     )
   }
 }
-library(thesisdown)
 library(dplyr)
 library(ggplot2)
 library(knitr)
