@@ -93,7 +93,7 @@ We can load in this data set using the following commands:
 
 ```{r load_data}
 # flights.csv is in the data directory
-flights_path <- here::here("data", "flights.csv")
+flights_path <- here::here("index", "data", "flights.csv")
 # string columns will be read in as strings and not factors now
 flights <- read.csv(flights_path, stringsAsFactors = FALSE)
 ```
@@ -127,7 +127,6 @@ if (length(new.pkg)) {
   install.packages(new.pkg, repos = "https://cran.rstudio.com")
 }
 # Load packages
-library(thesisdown)
 library(dplyr)
 library(ggplot2)
 library(knitr)
