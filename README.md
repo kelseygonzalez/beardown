@@ -1,8 +1,8 @@
 # beardown <img src="man/figures/beardown_hex.png" align="right" width=200 />
 
-An in-develop package for dissertation writing at the University of Arizona based off the [thesisdown](https://github.com/ismayc/thesisdown) R package and the UA Latex dissertation template from [drakeasberry/UA_Dissertation_Template](https://github.com/drakeasberry/UA_Dissertation_Template). 
+A package for dissertation writing at the University of Arizona based off the [thesisdown](https://github.com/ismayc/thesisdown) R package and the UA Latex dissertation template from [drakeasberry/UA_Dissertation_Template](https://github.com/drakeasberry/UA_Dissertation_Template). 
 
-Again, this is early in development but I'm determined to work out the kinks for the good of the data science community (and myself) and get this working. If you'd like to contribute, please reach out. 
+Strong thanks to the data science commmunity at the University of Arizona. Specifically, shout out to @drakeasberry who has provided ample testing of the package and the base latex template and to @karendelarosa who designed our beautiful hex sticker. We are still open to contributors to tackle the open issues and help maintain the package and the graduate college produces future requirements. Reach out if you'd like to be involved! 
 
 
 ### Using beardown
@@ -16,17 +16,11 @@ tinytex::install_tinytex()
 tinytex:::is_tinytex() 
 ```
  
-You may need to install a few extra LaTeX packages on your first attempt to knit as well. This is not a requirement, but an example of how to do so: 
-
-```{r}
-tinytex::tlmgr_install("babel-portuges")
-```
-
 To use **beardown** from [RStudio](https://www.rstudio.com/products/rstudio/download/):
 
 1) Ensure that you have already installed LaTeX and the fonts described above, and are using the latest version of [RStudio](https://www.rstudio.com/products/rstudio/download/). You can use `beardown` without RStudio. For example, you can write the Rmd files in your favourite text editor (e.g. [Atom](https://atom.io/), [Notepad++](https://notepad-plus-plus.org/)). But RStudio is probably the easiest tool for writing both R code and text in your thesis. It also provides a nice way to build your thesis while editing. We'll proceed assuming that you have decided to use the RStudio workflow.
 
-2) Install the **bookdown** and **beardown** packages. Note that **beardown** is not available on CRAN at the moment and that's why `install.packages("beardown")` won't work. Use `remotes::install_github()` as shown below instead to install the package.
+2) Install the **bookdown** and **beardown** packages. Note that **beardown** is not available on CRAN which is why `install.packages("beardown")` won't work. Use `remotes::install_github()` as shown below instead to install the package.
 
 ```r
 if (!require("remotes")) install.packages("remotes", repos = "https://cran.rstudio.org")
