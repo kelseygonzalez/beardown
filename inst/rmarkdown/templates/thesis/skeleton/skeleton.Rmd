@@ -28,7 +28,7 @@ output:
 # (e.g., abstract, acknowledgements) below or use code similar to line 25-26 
 # for the .RMD files. If you are NOT producing a PDF, delete or silence
 # lines 25-39 in this YAML header.
-abstract: '`r if(knitr:::is_latex_output()) paste(readLines(here::here("index", "prelims", "00-abstract.Rmd")), collapse = "\n  ")`'
+abstract: '`r if(knitr:::is_latex_output()) paste(readLines(here::here("prelims", "00-abstract.Rmd")), collapse = "\n  ")`'
 # If you'd rather include the preliminary content in files instead of inline
 # like below, use a command like that for the abstract above.  Note that a tab 
 # is needed on the line after the `|`.
@@ -102,11 +102,11 @@ Alternatively, you can put that content in files like 00--prelim.Rmd and
 
 
 
-```{r eval=!knitr::is_latex_output(), child=here::here("index", "prelims", "00--prelim.Rmd")}
+```{r eval=!knitr::is_latex_output(), child=here::here("prelims", "00--prelim.Rmd")}
 
 ```
 
-```{r eval=!knitr::is_latex_output(), child=here::here("index", "prelims", "00-abstract.Rmd")}
+```{r eval=!knitr::is_latex_output(), child=here::here("prelims", "00-abstract.Rmd")}
 
 ```
 
